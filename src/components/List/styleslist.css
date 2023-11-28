@@ -1,0 +1,30 @@
+.form-ontrol {
+    margin: 5px;
+    min-width: 120px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+  }
+
+  .selectEmpty {
+    margin-top: 2%
+  }
+
+  .loading {
+    height: '600px';
+    display: 'flex';
+    justify-content: 'center';
+    align-items: 'center';
+  }
+
+  .container {
+    padding: '25px'
+  }
+
+  .marginBottom {
+    margin-bottom: '30px'
+  }
+
+  .list {
+    height: '75vh';
+    overflow: 'auto'
+  }
