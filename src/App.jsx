@@ -8,11 +8,9 @@ import { CssBaseline, Grid } from '@mui/material'
 function App() {
 
   const [places, setPlaces] = useState([])
-  const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 })
-  const [boundary, setBoundary] = useState({
-    sw: { lat: 0, lng: 0 },
-    ne: { lat: 0, lng: 0 }
-  });
+  const [coordinates, setCoordinates] = useState({})
+  const [boundary, setBoundary] = useState({});
+
 
 
   //get user location onload
@@ -56,7 +54,7 @@ function App() {
     <Header />
     <Grid container spacing={3} style={{width: "100%"}}>
         <Grid item xs={12} md={4}>
-          <List />
+          <List places={places} />
         </Grid>
         <Grid item xs={12} md={8}>
           <MapContainer 

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import GoogleMapReact from 'google-map-react';
 import Typography from "@mui/material/Typography";
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -12,23 +12,21 @@ const MapContainer = ({setCoordinates, setBoundary, coordinates}) => {
 
   const isMobile = useMediaQuery("(min-width:600px)")
 
-  const [mapCenter, setMapCenter] = useState({ lat: coordinates.lat || 0, lng: coordinates.lng || 0 });
+  const [mapCenter, setMapCenter] = useState({
+    lat: coordinates.lat || 0,
+    lng: coordinates.lng || 0,
+  });
+
+  useEffect(() => {
+    // Update map center when coordinates change
+    setMapCenter({ lat: coordinates.lat || 0, lng: coordinates.lng || 0 });
+  }, [coordinates]);
 
   const defaultProps = {
     center: mapCenter,
     zoom: 14
   };
  
-  // const defaultCenter = {
-  //   lat: 40.7128, // Example latitude
-  //   lng: -74.0060, // Example longitude
-  // };
-  
-  // const defaultProps = {
-  //   center: defaultCenter,
-  //   zoom: 14
-  // };
-
 
   return (
     <div style={{ height: '100vh', width: '100%' }}>
@@ -41,9 +39,9 @@ const MapContainer = ({setCoordinates, setBoundary, coordinates}) => {
         onChange={(e) => {
           // console.log(e)
           // setCoordinates({lat: e.center.lat, lng: e.center.lng})
+          console.log('New Coordinates:', { lat: e.center.lat, lng: e.center.lng });
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBoundary({ ne: e.marginBounds.ne, sw: e.marginBounds.sw })
-          setMapCenter({ lat: e.center.lat, lng: e.center.lng }); // Update the mapCenter state
         }}
           
         onChild= {""}
