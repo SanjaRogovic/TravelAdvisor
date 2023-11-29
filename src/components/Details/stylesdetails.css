@@ -1,17 +1,18 @@
 .chip {
-  margin: '5px 5px 5px 0';
+  margin: 5px 5px 5px 0px;
   }
 
 .subtitle {
-  display: 'flex';
-  align-items: 'center';
-  justify-content: "center"; 
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
   margin-top: 10px;
   }
 
 .spacing {
-    display: 'flex'; 
-    align-items: 'center'; 
-    justify-content: 'space-between';
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
   }
 
+  

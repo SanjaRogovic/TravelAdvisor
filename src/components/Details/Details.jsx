@@ -1,5 +1,7 @@
 import React from "react";
-import Box from "@mui/material/Box";
+
+import Box from '@mui/system/Box';
+
 import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
 import Card from "@mui/material/Card";
@@ -18,21 +20,23 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
 import Rating from "@mui/material/Rating";
 
-import "./stylesdetails.css";
+import "../Details/stylesdetails.css"
 import { LocationCityOutlined, LocationOn } from "@mui/icons-material";
 import Phone from "@mui/icons-material/Phone";
 
 const Details = ({ place }) => {
   console.log(place);
+  // console.log("Place Object:", place);
+  // console.log("Photo Object:", place.photo);
+  // console.log("Photo URL:", place.photo?.images?.large?.url);
 
   return (
     <Card elevation={6}>
       <CardMedia
-        style={{ height: "350" }}
+        sx={{ height: 350 }}
         image={
-          place.photo
-            ? place.photo.images.large.url
-            : "Error displaying the image"
+          place.photo ? place.photo.images.large.url :
+          "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1255/image-not-found.svg"
         }
         title={place.name}
       />
@@ -40,11 +44,12 @@ const Details = ({ place }) => {
         <Typography gutterBottom variant="h5">
           {place.name}
         </Typography>
-        <Box display="flex" justifyContent="space-between">
+        <Box display="flex" justifyContent="space-between" my={1}>
           <Typography variant="subtitle1">Price</Typography>
           <Typography gutterBottom variant="subtitle1">
             {place.price_level}
           </Typography>
+
           <Typography variant="subtitle1">Ranking</Typography>
           <Typography gutterBottom variant="subtitle1">
             {place.ranking}
