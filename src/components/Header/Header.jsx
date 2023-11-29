@@ -10,9 +10,7 @@ import InputBase from "@mui/material/InputBase";
 // import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 
-// import { withStyles } from "@mui/material/styles"
 
-// import useStyles from "./styles"
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -56,8 +54,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const Header = () => {
-  // const classes = useStyles()
+
+const Header = ({ onPlaceChanged, onLoad }) => {
 
   return (
     <AppBar position="static">
@@ -79,7 +77,7 @@ const Header = () => {
           >
             Explore new places
           </Typography>
-          {/* <Autocomplete> */}
+          <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -89,7 +87,7 @@ const Header = () => {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-          {/* </Autocomplete> */}
+          </Autocomplete>
         </Box>
       </Toolbar>
     </AppBar>

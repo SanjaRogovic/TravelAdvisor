@@ -8,7 +8,8 @@ import Rating from '@mui/material/Rating';
 import "./styles.css"
 
 
-const MapContainer = ({setCoordinates, setBoundary, coordinates, places, setChildClicked}) => {
+
+const MapContainer = ({setCoordinates, setBoundary, coordinates, places, setChildClicked, weatherData}) => {
 
   const isDesktop = useMediaQuery("(min-width:600px)")
   
@@ -32,11 +33,11 @@ const MapContainer = ({setCoordinates, setBoundary, coordinates, places, setChil
   return (
     <div style={{ height: "100vh", width: "100%" }}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyBhld150pExD5aXK1raNF6zq56iLWZlJlk" }}
+        bootstrapURLKeys={{ key: import.meta.env.VITE_GOOGLE_MAPS_API_KEY }}
         center={defaultProps.center}
         defaultZoom={defaultProps.zoom}
         margin={[50, 50, 50, 50]}
-        option={""}
+        option={{ disableDefaultUI: true, zoomControl: true }}
         onChange={(e) => {
           // console.log(e)
           // setCoordinates({lat: e.center.lat, lng: e.center.lng})
@@ -76,11 +77,22 @@ const MapContainer = ({setCoordinates, setBoundary, coordinates, places, setChil
                   }
                   alt={place.name}
                 />
-                <Rating size='small' value={Number(place.rating)} readOnly/>
+                <Rating size="small" value={Number(place.rating)} readOnly />
               </Paper>
             )}
           </div>
         ))}
+
+        {weatherData?.list?.length &&
+          weatherData.list.map((data, i) => (
+            <div key={i} lat={data.coord.lat} lng={data.coord.lon}>
+              <img
+                src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`}
+                height="70px"
+              />
+            </div>
+          ))}
+          
       </GoogleMapReact>
     </div>
   );
