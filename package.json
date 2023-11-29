@@ -17,7 +17,6 @@
     "@mui/lab": "^5.0.0-alpha.153",
     "@mui/material": "^5.14.18",
     "@mui/styled-engine-sc": "^6.0.0-alpha.6",
-    "@mui/styles": "^5.14.18",
     "@react-google-maps/api": "^2.19.2",
     "axios": "^1.6.2",
     "google-map-react": "^2.2.1",
