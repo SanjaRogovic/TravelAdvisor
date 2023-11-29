@@ -24,11 +24,13 @@ import "../Details/stylesdetails.css"
 import { LocationCityOutlined, LocationOn } from "@mui/icons-material";
 import Phone from "@mui/icons-material/Phone";
 
-const Details = ({ place }) => {
+const Details = ({ place, selected, refProp  }) => {
   console.log(place);
   // console.log("Place Object:", place);
   // console.log("Photo Object:", place.photo);
   // console.log("Photo URL:", place.photo?.images?.large?.url);
+
+  if(selected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start"})
 
   return (
     <Card elevation={6}>
@@ -44,12 +46,22 @@ const Details = ({ place }) => {
         <Typography gutterBottom variant="h5">
           {place.name}
         </Typography>
+
+        <Box display="flex" justifyContent="space-between" my={1} >
+          <Rating value={Number(place.rating)} readOnly/>
+          <Typography gutterBottom variant="subtitle1">
+            out of {place.num_reviews}
+          </Typography>
+        </Box>
+
         <Box display="flex" justifyContent="space-between" my={1} >
           <Typography variant="subtitle1">Price</Typography>
           <Typography gutterBottom variant="subtitle1">
             {place.price_level}
           </Typography>
-
+        </Box>
+        
+        <Box display="flex" justifyContent="space-between" my={1}>
           <Typography variant="subtitle1">Ranking</Typography>
           <Typography gutterBottom variant="subtitle1">
             {place.ranking}

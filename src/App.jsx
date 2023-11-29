@@ -12,6 +12,8 @@ function App() {
   const [places, setPlaces] = useState([])
   const [coordinates, setCoordinates] = useState({})
   const [boundary, setBoundary] = useState({});
+  const [childClicked, setChildclicked] = useState(null)
+  const [loading, setLoading] = useState(false)
 
 
 
@@ -35,15 +37,18 @@ function App() {
   useEffect(() => {
     console.log(coordinates, boundary)
 
+    setLoading(true)
+
     if (boundary && boundary.sw && boundary.ne) {
       getPlacesData(boundary.sw, boundary.ne)
         .then((data) => {
           console.log(data);
           setPlaces(data);
+          setLoading(false)
         })
         .catch((error) => {
           console.error("Error fetching places data:", error);
-        });
+        })       
     }
   }, [coordinates, boundary])
 
@@ -57,13 +62,19 @@ function App() {
   
     <Grid container spacing={3} style={{width: "100%"}} p={4} >
         <Grid item xs={12} md={4} sx={{ overflowY: "scroll", maxHeight: "1100px"}}>
-          <List places={places} />
+          <List 
+            places={places}
+            childClicked={childClicked}
+            loading={loading}
+          />
         </Grid>
         <Grid item xs={12} md={8}>
           <MapContainer 
             setCoordinates={setCoordinates}
             setBoundary={setBoundary}
             coordinates={coordinates}
+            places={places}
+            setChildclicked={setChildclicked}
           />
         </Grid>
     </Grid>
