@@ -44,7 +44,7 @@ const Details = ({ place }) => {
         <Typography gutterBottom variant="h5">
           {place.name}
         </Typography>
-        <Box display="flex" justifyContent="space-between" my={1}>
+        <Box display="flex" justifyContent="space-between" my={1} >
           <Typography variant="subtitle1">Price</Typography>
           <Typography gutterBottom variant="subtitle1">
             {place.price_level}

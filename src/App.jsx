@@ -3,7 +3,9 @@ import Header from './components/Header/Header'
 import List from "./components/List/List"
 import MapContainer from './components/MapContainer/MapContainer'
 import { getPlacesData } from './api'
-import { CssBaseline, Grid } from '@mui/material'
+import CssBaseline from '@mui/material/CssBaseline';
+import Grid from '@mui/material/Grid';
+
 
 function App() {
 
@@ -52,8 +54,9 @@ function App() {
    
     <CssBaseline />
     <Header />
-    <Grid container spacing={3} style={{width: "100%"}}>
-        <Grid item xs={12} md={4}>
+  
+    <Grid container spacing={3} style={{width: "100%"}} p={4} >
+        <Grid item xs={12} md={4} sx={{ overflowY: "scroll", maxHeight: "1100px"}}>
           <List places={places} />
         </Grid>
         <Grid item xs={12} md={8}>
@@ -64,6 +67,7 @@ function App() {
           />
         </Grid>
     </Grid>
+   
    
     </>
   )
