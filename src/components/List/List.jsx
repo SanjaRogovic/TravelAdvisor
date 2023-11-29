@@ -11,9 +11,8 @@ import {
 import Details from "../Details/Details";
 import "./styleslist.css";
 
-const List = ({ places, childClicked, loading }) => {
-  const [type, setType] = useState("restaurants");
-  const [rating, setRating] = useState("");
+const List = ({ places, childClicked, loading, type, setType, rating, setRating }) => {
+ 
   const [reference, setReference] = useState([]); // state for making the list scroll to the specific element using createRef hook
 
   console.log({ childClicked }); // try to click on the image and not on the name or rating as it might not get recognized being clicked
