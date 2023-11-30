@@ -1,0 +1,40 @@
+.title {
+    display: 'none';
+  }
+
+.search {
+    position: 'relative';
+    border-radius: 10px;
+    background-color: aliceblue;
+    margin-right: 5px;
+    margin-left: 0;
+    width: '100%';
+  }
+
+  .search:hover{
+    background-color: azure;
+  }
+
+.searchIcon {
+    padding: 10px;
+    height: '100%'; 
+    position: 'absolute'; 
+    pointer-events: none; 
+    display: 'flex';
+    align-items: center; 
+    justify-content: center;
+  }
+
+.inputRoot {
+    color: 'inherit';
+  }
+
+.inputInput {
+    padding: 10px;
+    padding-left: 5px;
+  }
+
+.toolbar {
+    display: 'flex'; 
+    justify-content: 'space-between';
+  }

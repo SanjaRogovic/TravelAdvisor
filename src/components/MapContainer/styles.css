@@ -9,9 +9,16 @@
     
   }
 
-  
-.pointer {
-    cursor: 'pointer';
+  .pointer:hover{
+    cursor: pointer;
+  }
+
+.paper {
+    padding: 10px; 
+    display: 'flex'; 
+    flex-direction: column; 
+    justify-content: center;
+    width: fit-content;
   }
 
   

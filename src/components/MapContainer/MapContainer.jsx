@@ -14,43 +14,40 @@ const MapContainer = ({setCoordinates, setBoundary, coordinates, places, setChil
   const isDesktop = useMediaQuery("(min-width:600px)")
   
 
-  const [mapCenter, setMapCenter] = useState({
-    lat: coordinates.lat || 0,
-    lng: coordinates.lng || 0,
-  });
+  // const [mapCenter, setMapCenter] = useState({
+  //   lat: coordinates.lat || 0,
+  //   lng: coordinates.lng || 0,
+  // });
 
-  useEffect(() => {
-    // Update map center when coordinates change
-    setMapCenter({ lat: coordinates.lat || 0, lng: coordinates.lng || 0 });
-  }, [coordinates]);
+  // useEffect(() => {
+  //   // Update map center when coordinates change
+  //   setMapCenter({ lat: coordinates.lat || 0, lng: coordinates.lng || 0 });
+  // }, [coordinates]);
 
-  const defaultProps = {
-    center: mapCenter,
-    zoom: 14
-  };
+  // const defaultProps = {
+  //   center: mapCenter,
+  //   zoom: 14
+  // };
  
 
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
+    <div style={{ height: "100vh", width: "100%" }} className='map-container'>
       <GoogleMapReact
         bootstrapURLKeys={{ key: import.meta.env.VITE_GOOGLE_MAPS_API_KEY }}
-        center={defaultProps.center}
-        defaultZoom={defaultProps.zoom}
+        defaultCenter={coordinates}
+        center={coordinates}
+        defaultZoom={14}
+        // center={defaultProps.center}
+        // defaultZoom={defaultProps.zoom}
         margin={[50, 50, 50, 50]}
         option={{ disableDefaultUI: true, zoomControl: true }}
         onChange={(e) => {
-          // console.log(e)
-          // setCoordinates({lat: e.center.lat, lng: e.center.lng})
-          console.log("New Coordinates:", {
-            lat: e.center.lat,
-            lng: e.center.lng,
-          });
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBoundary({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
-        onChildClick={(child) => setChildClicked(child)}
+        onClick={(child) => setChildClicked(child)}
       >
-        {places?.map((place, index) => (
+        {places.map((place, index) => (
           <div
             className="markerContainer"
             lat={Number(place.latitude)}
@@ -69,10 +66,10 @@ const MapContainer = ({setCoordinates, setBoundary, coordinates, places, setChil
                   {place.name}
                 </Typography>
                 <img
-                  className="pointer"
+                className='pointer'
                   src={
                     place.photo
-                      ? place.photo.images.large.url
+                      ? place.photo.images.small.url
                       : "https://s3-us-west-2.amazonaws.com/s.cdpn.io/1255/image-not-found.svg"
                   }
                   alt={place.name}
@@ -88,7 +85,7 @@ const MapContainer = ({setCoordinates, setBoundary, coordinates, places, setChil
             <div key={i} lat={data.coord.lat} lng={data.coord.lon}>
               <img
                 src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`}
-                height="70px"
+                height="50px"
               />
             </div>
           ))}

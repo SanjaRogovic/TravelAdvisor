@@ -59,7 +59,7 @@ const Header = ({ onPlaceChanged, onLoad }) => {
 
   return (
     <AppBar position="static">
-      <Toolbar>
+      <Toolbar style={{backgroundColor: "#606e7e"}}>
         <Typography
           variant="h5"
           noWrap

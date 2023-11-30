@@ -1,36 +1,24 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import Box from '@mui/system/Box';
-
 import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
 import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
 import Typography from "@mui/material/Typography";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import PhoneIcon from "@mui/icons-material/Phone";
 import Rating from "@mui/material/Rating";
 
 import "../Details/stylesdetails.css"
-import { LocationCityOutlined, LocationOn } from "@mui/icons-material";
-import Phone from "@mui/icons-material/Phone";
 
-const Details = ({ place, selected, refProp  }) => {
-  console.log(place);
-  // console.log("Place Object:", place);
-  // console.log("Photo Object:", place.photo);
-  // console.log("Photo URL:", place.photo?.images?.large?.url);
+const Details = ({ place, selected, refProp }) => {
+  // console.log(place);
 
-  if(selected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start"})
+  if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
 
   return (
     <Card elevation={6}>
@@ -47,22 +35,22 @@ const Details = ({ place, selected, refProp  }) => {
           {place.name}
         </Typography>
 
-        <Box display="flex" justifyContent="space-between" my={1} >
-          <Rating value={Number(place.rating)} readOnly/>
-          <Typography gutterBottom variant="subtitle1">
-            out of {place.num_reviews}
+        <Box display="flex" justifyContent="space-between" my={2} >
+          <Rating name="read-only" value={Number(place.rating)} readOnly/>
+          <Typography component="legend">
+          {place.num_reviews} reviews {place.num_reviews > 1}
           </Typography>
         </Box>
 
-        <Box display="flex" justifyContent="space-between" my={1} >
-          <Typography variant="subtitle1">Price</Typography>
+        <Box display="flex" justifyContent="space-between"  >
+          <Typography component="legend">Price</Typography>
           <Typography gutterBottom variant="subtitle1">
             {place.price_level}
           </Typography>
         </Box>
         
-        <Box display="flex" justifyContent="space-between" my={1}>
-          <Typography variant="subtitle1">Ranking</Typography>
+        <Box display="flex" justifyContent="space-between" >
+          <Typography component="legend">Ranking</Typography>
           <Typography gutterBottom variant="subtitle1">
             {place.ranking}
           </Typography>
@@ -75,7 +63,7 @@ const Details = ({ place, selected, refProp  }) => {
             justifyContent="space-between"
             alignItems="center"
           >
-            <img src={award.images.small} alt={award.display_name} />
+            <img src={award.images.small} />
             <Typography variant="subtitle2" color="textSecondary">
               {award.display_name}
             </Typography>
@@ -107,6 +95,7 @@ const Details = ({ place, selected, refProp  }) => {
             <PhoneIcon /> {place.phone}
           </Typography>
         )}
+        </CardContent>
 
         <CardActions>
           <Button
@@ -124,7 +113,7 @@ const Details = ({ place, selected, refProp  }) => {
             Website
           </Button>
         </CardActions>
-      </CardContent>
+      
     </Card>
   );
 };

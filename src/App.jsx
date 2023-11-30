@@ -51,7 +51,7 @@ function App() {
 
 
   useEffect(() => {
-    console.log(coordinates, boundary)
+    // console.log(coordinates, boundary)
 
     if (boundary.sw && boundary.ne) {
       setLoading(true)
@@ -68,7 +68,7 @@ function App() {
 
       getPlacesData(type, boundary.sw, boundary.ne)
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           setPlaces(data?.filter((place) => place.name && place.num_reviews > 0)); //check if the place has a name and reviews - get rid of dummy data
           setFilteredPlaces([])
           setLoading(false)
@@ -101,13 +101,13 @@ function App() {
     <Header onLoad={onLoad} onPlaceChanged={onPlaceChanged} />
   
     <Grid container spacing={3} style={{width: "100%"}} p={4} >
-        <Grid item xs={12} md={4} sx={{ overflowY: "scroll", maxHeight: "1100px"}}>
+        <Grid item xs={12} md={4} sx={{ overflowY: "scroll"}}>
           <List 
             places={filteredPlaces.length ? filteredPlaces : places}
             childClicked={childClicked}
             loading={loading}
             type={type}
-            settype={setType}
+            setType={setType}
             rating={rating}
             setRating={setRating}
           />
