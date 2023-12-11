@@ -1,8 +1,5 @@
-# React + Vite
+# Travel Advisor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+https://travel-advisor-263h.onrender.com/
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![traveladvisor](https://github.com/SanjaRogovic/TravelAdvisor/assets/74556703/b73d26d2-2fac-4c3b-91fe-60f3b348fc68)
