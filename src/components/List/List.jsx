@@ -34,7 +34,7 @@ const List = ({ places, childClicked, loading, type, setType, rating, setRating 
   return (
     <div className="container">
       <Typography variant="h4" className="title">
-        Restaurants, Hotels & Attractions around you
+        Restaurants, Hotels & Attractions 
       </Typography>
       <hr />
 
